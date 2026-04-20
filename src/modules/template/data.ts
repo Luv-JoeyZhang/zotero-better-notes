@@ -421,4 +421,220 @@ const DEFAULT_TEMPLATES = <NoteTemplate[]>[
   return md;
 }}$`,
   },
+  {
+    name: "[Item] Review Paper Reading Note / 综述论文阅读笔记",
+    text: `// @use-markdown
+// @author Zotero Better Notes
+// @link https://github.com/windingwind/zotero-better-notes
+
+\${{
+  /* ===== APA Narrative Citation 生成 ===== */
+  const creators = topItem.getCreators();
+  const year = topItem.getField("year") || "n.d.";
+  let citation = "";
+  if (creators.length === 0) {
+    citation = "Unknown (" + year + ")";
+  } else if (creators.length === 1) {
+    citation = creators[0].lastName + " (" + year + ")";
+  } else if (creators.length === 2) {
+    citation = creators[0].lastName + " & " + creators[1].lastName + " (" + year + ")";
+  } else {
+    citation = creators[0].lastName + " et al. (" + year + ")";
+  }
+
+  let md = "";
+  md += "# " + citation + "\\n\\n";
+
+  /* -- Executive Summary 论文概述 -- */
+  md += "---\\n\\n";
+  md += "## Executive Summary / 论文概述\\n\\n";
+  md += "### Narrative Summary / 文字概述\\n\\n";
+  md += "<!-- 用一段话概括这篇综述的核心内容：综述了什么领域、采用什么方法、得出什么结论 -->\\n\\n";
+  md += "\\u00A0\\n\\n";
+  md += "### Organizing Framework / 组织框架\\n\\n";
+  md += "<!-- 记录综述的整体组织逻辑或分析框架 -->\\n\\n";
+  md += "\\u00A0\\n\\n";
+
+  /* -- My Reflections 我的迷思 -- */
+  md += "---\\n\\n";
+  md += "## My Reflections / 我的迷思\\n\\n";
+  md += "<!-- 记录你在阅读过程中的思考、疑问和灵感 -->\\n\\n";
+  md += "- \\n\\n";
+
+  /* -- Review Scope & Questions 综述范围与问题 -- */
+  md += "---\\n\\n";
+  md += "## Review Scope & Questions / 综述范围与问题\\n\\n";
+  md += "\\u00A0\\n\\n";
+  md += "### Research Questions / 研究问题\\n\\n";
+  md += "\\u00A0\\n\\n";
+  md += "### Scope & Boundaries / 综述范围\\n\\n";
+  md += "<!-- 综述覆盖的领域、时间范围、学科边界等 -->\\n\\n";
+  md += "\\u00A0\\n\\n";
+
+  /* -- Review Methodology 综述方法 -- */
+  md += "---\\n\\n";
+  md += "## Review Methodology / 综述方法\\n\\n";
+  md += "| Aspect / 方面 | Description / 描述 |\\n";
+  md += "| :--- | :--- |\\n";
+  md += "| **Review Type / 综述类型** |  |\\n";
+  md += "| **Search Strategy / 检索策略** |  |\\n";
+  md += "| **Databases / 数据库** |  |\\n";
+  md += "| **Time Range / 时间范围** |  |\\n";
+  md += "| **Inclusion Criteria / 纳入标准** |  |\\n";
+  md += "| **Exclusion Criteria / 排除标准** |  |\\n";
+  md += "| **Sample Size / 文献数量** |  |\\n";
+  md += "| **Analysis Method / 分析方法** |  |\\n";
+  md += "\\n";
+  md += "<!-- 综述类型如：系统综述/元分析/叙述性综述/范围综述/整合性综述等 -->\\n\\n";
+
+  /* -- Key Themes & Findings 核心主题与发现 -- */
+  md += "---\\n\\n";
+  md += "## Key Themes & Findings / 核心主题与发现\\n\\n";
+  md += "<!-- 记录综述归纳出的主要主题、趋势和核心发现 -->\\n\\n";
+  md += "### Theme 1 / 主题一\\n\\n";
+  md += "\\u00A0\\n\\n";
+  md += "### Theme 2 / 主题二\\n\\n";
+  md += "\\u00A0\\n\\n";
+  md += "### Theme 3 / 主题三\\n\\n";
+  md += "\\u00A0\\n\\n";
+
+  /* -- Theoretical Insights 理论洞见 -- */
+  md += "---\\n\\n";
+  md += "## Theoretical Insights / 理论洞见\\n\\n";
+  md += "<!-- 综述对现有理论的梳理、整合或推进 -->\\n\\n";
+  md += "- \\n\\n";
+
+  /* -- Research Gaps & Future Agenda 研究空白与未来议程 -- */
+  md += "---\\n\\n";
+  md += "## Research Gaps & Future Agenda / 研究空白与未来议程\\n\\n";
+  md += "### Identified Gaps / 已识别的研究空白\\n\\n";
+  md += "- \\n\\n";
+  md += "### Future Directions / 未来方向\\n\\n";
+  md += "- \\n\\n";
+  md += "### Methodological Recommendations / 方法论建议\\n\\n";
+  md += "- \\n\\n";
+
+  /* -- Key References to Follow Up 值得追踪的关键文献 -- */
+  md += "---\\n\\n";
+  md += "## Key References to Follow Up / 值得追踪的关键文献\\n\\n";
+  md += "<!-- 记录综述中引用的、值得深入阅读的重要文献 -->\\n\\n";
+  md += "- \\n\\n";
+
+  /* -- Key Quotes 可引用原文 -- */
+  md += "---\\n\\n";
+  md += "## Key Quotes / 可引用原文\\n\\n";
+  md += "<!-- 记录值得引用的原文段落 -->\\n\\n";
+  md += "> \\"...\\" (" + citation + ", p. )\\n\\n";
+
+  return md;
+}}$`,
+  },
+  {
+    name: "[Item] Conceptual Paper Reading Note / 概念论文阅读笔记",
+    text: `// @use-markdown
+// @author Zotero Better Notes
+// @link https://github.com/windingwind/zotero-better-notes
+
+\${{
+  /* ===== APA Narrative Citation 生成 ===== */
+  const creators = topItem.getCreators();
+  const year = topItem.getField("year") || "n.d.";
+  let citation = "";
+  if (creators.length === 0) {
+    citation = "Unknown (" + year + ")";
+  } else if (creators.length === 1) {
+    citation = creators[0].lastName + " (" + year + ")";
+  } else if (creators.length === 2) {
+    citation = creators[0].lastName + " & " + creators[1].lastName + " (" + year + ")";
+  } else {
+    citation = creators[0].lastName + " et al. (" + year + ")";
+  }
+
+  let md = "";
+  md += "# " + citation + "\\n\\n";
+
+  /* -- Executive Summary 论文概述 -- */
+  md += "---\\n\\n";
+  md += "## Executive Summary / 论文概述\\n\\n";
+  md += "### Narrative Summary / 文字概述\\n\\n";
+  md += "<!-- 用一段话概括这篇论文的核心内容：提出了什么概念/框架、基于什么理论、有何贡献 -->\\n\\n";
+  md += "\\u00A0\\n\\n";
+  md += "### Conceptual Model / 概念模型\\n\\n";
+  md += "<!-- 记录论文提出的概念模型或理论框架 -->\\n\\n";
+  md += "\\u00A0\\n\\n";
+
+  /* -- My Reflections 我的迷思 -- */
+  md += "---\\n\\n";
+  md += "## My Reflections / 我的迷思\\n\\n";
+  md += "<!-- 记录你在阅读过程中的思考、疑问和灵感 -->\\n\\n";
+  md += "- \\n\\n";
+
+  /* -- Core Argument 核心论点 -- */
+  md += "---\\n\\n";
+  md += "## Core Argument / 核心论点\\n\\n";
+  md += "<!-- 记录论文的中心论点和主要主张 -->\\n\\n";
+  md += "\\u00A0\\n\\n";
+
+  /* -- Theoretical Foundations 理论基础 -- */
+  md += "---\\n\\n";
+  md += "## Theoretical Foundations / 理论基础\\n\\n";
+  md += "<!-- 论文建立在哪些已有理论之上 -->\\n\\n";
+  md += "| Theory / 理论 | Role in Paper / 在本文中的作用 |\\n";
+  md += "| :--- | :--- |\\n";
+  md += "|  |  |\\n";
+  md += "|  |  |\\n";
+  md += "\\n";
+
+  /* -- Conceptual Development 概念构建 -- */
+  md += "---\\n\\n";
+  md += "## Conceptual Development / 概念构建\\n\\n";
+  md += "### Key Concepts & Definitions / 核心概念与定义\\n\\n";
+  md += "| Concept / 概念 | Definition / 定义 |\\n";
+  md += "| :--- | :--- |\\n";
+  md += "|  |  |\\n";
+  md += "|  |  |\\n";
+  md += "\\n";
+  md += "### Logical Argumentation / 论证逻辑\\n\\n";
+  md += "<!-- 记录论文的论证步骤和推理链条 -->\\n\\n";
+  md += "1. \\n";
+  md += "2. \\n";
+  md += "3. \\n\\n";
+
+  /* -- Propositions 理论命题 -- */
+  md += "---\\n\\n";
+  md += "## Propositions / 理论命题\\n\\n";
+  md += "<!-- 记录论文提出的理论命题 -->\\n\\n";
+  md += "- P1: \\n";
+  md += "- P2: \\n";
+  md += "- P3: \\n\\n";
+
+  /* -- Contributions & Implications 理论贡献与实践启示 -- */
+  md += "---\\n\\n";
+  md += "## Contributions & Implications / 理论贡献与实践启示\\n\\n";
+  md += "### Theoretical Contributions / 理论贡献\\n\\n";
+  md += "- \\n\\n";
+  md += "### Practical Implications / 实践启示\\n\\n";
+  md += "- \\n\\n";
+
+  /* -- Limitations & Future Research 局限与未来方向 -- */
+  md += "---\\n\\n";
+  md += "## Limitations & Future Research / 局限与未来方向\\n\\n";
+  md += "### Boundary Conditions / 边界条件\\n\\n";
+  md += "<!-- 该理论/框架的适用范围和边界 -->\\n\\n";
+  md += "- \\n\\n";
+  md += "### Testable Implications / 可验证的推论\\n\\n";
+  md += "<!-- 该理论可以通过哪些实证研究来检验 -->\\n\\n";
+  md += "- \\n\\n";
+  md += "### Future Directions / 未来方向\\n\\n";
+  md += "- \\n\\n";
+
+  /* -- Key Quotes 可引用原文 -- */
+  md += "---\\n\\n";
+  md += "## Key Quotes / 可引用原文\\n\\n";
+  md += "<!-- 记录值得引用的原文段落 -->\\n\\n";
+  md += "> \\"...\\" (" + citation + ", p. )\\n\\n";
+
+  return md;
+}}$`,
+  },
 ];
